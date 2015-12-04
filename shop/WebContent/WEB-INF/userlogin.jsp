@@ -9,9 +9,14 @@
 <title>网上商城</title>
 <meta http-equiv="Content-Type" content="text/html; charset=gb2312">
 <link rel="stylesheet" href="style.css" type="text/css">
+<c:if test="${ok!=null}">
+	<script type="text/javascript">
+		var ok = "${ok}";
+		alert(ok);
+	</script>
+</c:if>
 </head>
 <body bgcolor="#FFFFFF" text="#000000" topmargin="2">
-
 <table width="760" border="0" cellspacing="0" cellpadding="0" align="center">
   <tr> 
     <td background="images/topback.gif" width="130"><img src="images/sitelogo.gif" height="88"></td>
@@ -105,5 +110,6 @@
       2001 Powered by Peter.HJ</font></td>
   </tr>
 </table>
+
 </body>
 </html>
