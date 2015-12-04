@@ -10,8 +10,12 @@
 <meta http-equiv="Content-Type" content="text/html; charset=gb2312">
 <link rel="stylesheet" href="style.css" type="text/css">
 <script src="http://libs.baidu.com/jquery/1.9.1/jquery.min.js"></script>
-<script src="js/register.js"></script>
-
+<c:if test="${fail!=null}">
+	<script type="text/javascript">
+		var fail = "${fail}";
+		alert(fail);
+	</script>
+</c:if>
 </head>
 <body bgcolor="#FFFFFF" text="#000000" topmargin="2">
 <table width="760" border="0" cellspacing="0" cellpadding="0" align="center">
@@ -73,19 +77,19 @@
           <tr bgcolor="#FFFFFF"> 
             <td width="34%" align="right">电子邮件：</td>
             <td width="66%"> 
-              <input type="text" name="customer.email" maxlength="100">
+              <input type="text" class="input"id="email" name="customer.email" maxlength="100">
             </td>
           </tr>
           <tr bgcolor="#FFFFFF"> 
             <td width="34%" align="right">密码：</td>
             <td width="66%"> 
-              <input type="password" name="pass" maxlength="10">
+              <input type="password" class="input"id="pass"name="customer.password" maxlength="10">
               密码需大于4位小于10位</td>
           </tr>
           <tr bgcolor="#FFFFFF"> 
             <td width="34%" align="right">确认密码：</td>
             <td width="66%"> 
-              <input type="password" name="comfpass" maxlength="10">
+              <input type="password"class="input" id="comf" name="comfpass" maxlength="10">
             </td>
           </tr>
           <tr bgcolor="#FFFFCC"> 
@@ -93,12 +97,12 @@
           </tr>
           <tr bgcolor="#FFFFFF"> 
             <td width="34%" align="right">取回密码问题：</td>
-            <td width="66%"><input type="text" name="customer.passwordQuestion" maxlength="100"></td>
+            <td width="66%"><input type="text"class="input" name="customer.passwordQuestion" maxlength="100"></td>
           </tr>
           <tr bgcolor="#FFFFFF"> 
             <td width="34%" align="right">取回密码答案：</td>
             <td width="66%"> 
-              <input type="password" name="customer.passwordAnswer" maxlength="100">
+              <input type="password" class="input"name="customer.passwordAnswer" maxlength="100">
             </td>
           </tr>
           <tr bgcolor="#FFFFCC"> 
@@ -107,31 +111,31 @@
           <tr bgcolor="#FFFFFF"> 
             <td width="34%" align="right">真实姓名：</td>
             <td width="66%"> 
-              <input type="text" name="customer.realname" maxlength="50">
+              <input type="text"class="input" name="customer.realname" maxlength="50">
             </td>
           </tr>
           <tr bgcolor="#FFFFFF"> 
             <td width="34%" align="right">城市：</td>
             <td width="66%"> 
-              <input type="text" name="customer.city" maxlength="50">
+              <input type="text" class="input" name="customer.city" maxlength="50">
             </td>
           </tr>
           <tr bgcolor="#FFFFFF"> 
             <td width="34%" align="right" height="17">详细地址：</td>
             <td height="17" width="66%"> 
-              <textarea name="customer.address" rows="3" cols="30"></textarea>
+              <textarea class="input" name="customer.address" rows="3" cols="30"></textarea>
             </td>
           </tr>
           <tr bgcolor="#FFFFFF"> 
             <td width="34%" align="right">邮编：</td>
             <td width="66%"> 
-              <input type="text" name="customer.zip" maxlength="10">
+              <input type="text"class="input" name="customer.zip" maxlength="10">
             </td>
           </tr>
           <tr bgcolor="#FFFFFF"> 
             <td width="34%" align="right">电话：</td>
             <td width="66%"> 
-              <input type="text" name="customer.phone" maxlength="50">
+              <input type="text"class="input"name="customer.phone" maxlength="50">
             </td>
           </tr>
           <tr bgcolor="#FFFFFF" valign="middle"> 
@@ -156,5 +160,6 @@
       2001 Powered by Peter.HJ</font></td>
   </tr>
 </table>
+<script src="js/register.js" charset="gb2312"></script>
 </body>
 </html>
