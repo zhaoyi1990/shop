@@ -93,10 +93,9 @@ public class OrderdetailAction implements Serializable {
 		List<Orderdetails> orderdetails = MysqlUtil.queryForObjectList(Orderdetails.class,
 				"orderId=" + order1.getOrderId());
 		order1.setOrderdetails(orderdetails);
-		System.out.println(orderdetails.size());
-		System.out.println(order1.getOrderdetails().size());
-		ActionContext.getContext().put("order", order1);
-
+//		ActionContext.getContext().put("order", order1);
+		ServletActionContext.getRequest().setAttribute("order", order1);
+		
 		return Action.SUCCESS;
 	}
 }
