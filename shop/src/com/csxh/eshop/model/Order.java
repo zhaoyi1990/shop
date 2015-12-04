@@ -195,4 +195,13 @@ public class Order implements java.io.Serializable {
 		this.adminId = adminId;
 	}
 
+	@Override
+	public String toString() {
+		return "Order [id=" + id + ", orderId=" + orderId + ", customerId=" + customerId + ", payMethodId="
+				+ payMethodId + ", name=" + name + ", city=" + city + ", addres=" + addres + ", zip=" + zip + ", phone="
+				+ phone + ", shippingId=" + shippingId + ", orderDate=" + orderDate + ", finished=" + finished
+				+ ", finishedTime=" + finishedTime + ", adminName=" + adminName + ", adminId=" + adminId
+				+ ", totalPrice=" + totalPrice + ", orderdetails=" + orderdetails + "]";
+	}
+
 }

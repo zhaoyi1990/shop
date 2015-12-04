@@ -8,6 +8,13 @@
 <title>网上商城</title>
 <meta http-equiv="Content-Type" content="text/html; charset=gb2312">
 <link rel="stylesheet" href="style.css" type="text/css">
+
+<script type="text/javascript">
+	var a = ${order.orderdetails}
+	alert(a);
+</script>
+
+
 </head>
 <body bgcolor="#FFFFFF" text="#000000" topmargin="2">
 	<table width="760" border="0" cellspacing="0" cellpadding="0"
