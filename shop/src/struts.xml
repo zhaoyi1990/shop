@@ -27,6 +27,10 @@
 			method="handle">
 			<result name="success">WEB-INF/product.jsp</result>
 		</action>
+		<action name="product_*" class="com.csxh.eshop.action.ProductAction"
+			method="{1}">
+			<result name="success">WEB-INF/product.jsp</result>
+		</action>
 
 		<action name="cart" class="com.csxh.eshop.action.CartAction"
 			method="handle">
@@ -62,9 +66,14 @@
 			<result name="fail">WEB-INF/customer_register.jsp</result>
 		</action>
 		
-		<action name="product_*" class="com.csxh.eshop.action.ProductListAction" method="{1}List">
+		<action name="productList_*" class="com.csxh.eshop.action.ProductListAction" method="{1}List">
 			<result name="success">WEB-INF/{1}product.jsp</result>
 		</action>
+		
+		<action name="rating" class="com.csxh.eshop.action.ProductAction" method="rating">
+			<result name="success" type="redirect">WEB-INF/product.jsp</result>
+		</action>
+		
 		
 		<action name="*">
 			<result>WEB-INF/{1}.jsp</result>

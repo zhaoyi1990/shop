@@ -43,13 +43,13 @@
   <tr> 
     <td bgcolor="#FF9900" height="22" valign="middle" align="center"><table width="80%" border="0" cellspacing="2" cellpadding="2">
           <tr align="center" valign="middle"> 
-            <td><a href="product_new.do" class="white">新品快递</a></td>
+            <td><a href="productList_new.do" class="white">新品快递</a></td>
             
-    <td><a href="product_commend.do" class="white">重点推荐</a></td>
+    <td><a href="productList_commend.do" class="white">重点推荐</a></td>
             
-    <td><a href="product_sell.do" class="white">销售排行</a></td>
+    <td><a href="productList_sell.do" class="white">销售排行</a></td>
             
-    <td><a href="product_price.do" class="white">特价商品</a></td>
+    <td><a href="productList_price.do" class="white">特价商品</a></td>
           </tr>
         </table><!-- #EndLibraryItem --></td>
   </tr>

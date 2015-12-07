@@ -10,6 +10,7 @@ import org.apache.struts2.ServletActionContext;
 import com.csxh.eshop.model.Category;
 import com.csxh.eshop.model.Pager;
 import com.csxh.eshop.model.Product;
+import com.csxh.eshop.model.Rating;
 import com.csxh.eshop.model.Ratings;
 import com.csxh.eshop.model.Review;
 import com.csxh.eshop.model.Subcategory;
@@ -24,6 +25,11 @@ public class ProductAction implements Serializable  {
 	private static final long serialVersionUID = -5324815031753651177L;
 	private String id;
 	private int currentPage = 1;
+	private Rating rating;
+
+	public void setRating(Rating rating) {
+		this.rating = rating;
+	}
 
 	public void setId(String id) {
 		this.id = id;
@@ -81,5 +87,11 @@ public class ProductAction implements Serializable  {
 		ActionContext.getContext().put("ratings", ratings);
 
 		return Action.SUCCESS;
+	}
+	
+	public String rating(){
+		this.rating.setProductId(this.id);
+		MysqlUtil.insertObject(this.rating, "class");
+		return handle();
 	}
 }

@@ -37,13 +37,13 @@
     <tr> 
       <td bgcolor="#FF9900" height="22" valign="middle" align="center"><table width="80%" border="0" cellspacing="2" cellpadding="2">
           <tr align="center" valign="middle"> 
-            <td><a href="product_new.do" class="white">新品快递</a></td>
+            <td><a href="productList_new.do" class="white">新品快递</a></td>
             
-    <td><a href="product_commend.do" class="white">重点推荐</a></td>
+    <td><a href="productList_commend.do" class="white">重点推荐</a></td>
             
-    <td><a href="product_sell.do" class="white">销售排行</a></td>
+    <td><a href="productList_sell.do" class="white">销售排行</a></td>
             
-    <td><a href="product_price.do" class="white">特价商品</a></td>
+    <td><a href="productList_price.do" class="white">特价商品</a></td>
           </tr>
         </table>
         </td>
@@ -252,42 +252,42 @@
         </tr>
         <tr align="center"> 
           <td colspan="2"> 
-            <form name="rating_form" method="POST" action="">
+            <form name="rating_form" method="POST" action="product_rating.do">
               <table width="90%" border="0" cellspacing="2" cellpadding="2">
                 <tr> 
                   <td width="24%"> 
-                    <input type="radio" name="radiobutton" value="5" checked>
+                    <input type="radio" name="rating.rateLevel" value="5" checked>
                   </td>
                   <td width="76%"><img src="images/rating/5.gif" width="70" height="15"></td>
                 </tr>
                 <tr> 
                   <td width="24%"> 
-                    <input type="radio" name="radiobutton" value="4">
+                    <input type="radio" name="rating.rateLevel" value="4">
                   </td>
                   <td width="76%"><img src="images/rating/4.gif" width="70" height="15"></td>
                 </tr>
                 <tr> 
                   <td width="24%"> 
-                    <input type="radio" name="radiobutton" value="3">
+                    <input type="radio" name="rating.rateLevel" value="3">
                   </td>
                   <td width="76%"><img src="images/rating/3.gif" width="70" height="15"></td>
                 </tr>
                 <tr> 
                   <td width="24%"> 
-                    <input type="radio" name="radiobutton" value="2">
+                    <input type="radio" name="rating.rateLevel" value="2">
                   </td>
                   <td width="76%"><img src="images/rating/2.gif" width="70" height="15"></td>
                 </tr>
                 <tr> 
                   <td width="24%"> 
-                    <input type="radio" name="radiobutton" value="1">
+                    <input type="radio" name="rating.rateLevel" value="1">
                   </td>
                   <td width="76%"><img src="images/rating/1.gif" width="70" height="15"></td>
                 </tr>
                 <tr align="center"> 
                   <td colspan="2"> 
                     <input type="submit" name="Submit" value="评 分">
-                    <input type="hidden" name="hiddenField" value="${product.id}">
+                    <input type="hidden" name="id" value="${product.id}">
                   </td>
                 </tr>
               </table>
