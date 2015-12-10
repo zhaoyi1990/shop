@@ -2,7 +2,7 @@ package com.csxh.eshop.model;
 
 public class Pager {
 	// 总的记录数：从数据库查询等到
-	private int totalRows;
+	private long totalRows;
 
 	// 每页最多显示的记录数
 	private int pageRows;
@@ -13,7 +13,7 @@ public class Pager {
 	// 当前是第几页，从1开始计算
 	private int currentPage = 1;
 
-	public Pager(int totalRows, int pageRows) {
+	public Pager(long totalRows, int pageRows) {
 		super();
 		this.totalRows = totalRows;
 		this.pageRows = pageRows;
@@ -24,12 +24,12 @@ public class Pager {
 	public int getFirstRow(){
 		return (this.currentPage -1) * this.pageRows;
 	}
-	public int getLastRow() {
-		int rows = getFirstRow() + this.pageRows-1;
+	public long getLastRow() {
+		long rows = getFirstRow() + this.pageRows-1;
 		return rows > this.totalRows ? this.totalRows-1 : rows;
 	}
 	
-	public int getTotalRows() {
+	public long getTotalRows() {
 		return totalRows;
 	}
 	public int getPageRows() {
@@ -42,7 +42,7 @@ public class Pager {
 		return currentPage;
 	}
 
-	public void setTotalRows(int totalRows) {
+	public void setTotalRows(long totalRows) {
 		this.totalRows = totalRows;
 	}
 	public void setPageRows(int pageRows) {

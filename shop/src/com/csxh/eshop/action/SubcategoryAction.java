@@ -5,16 +5,19 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.struts2.ServletActionContext;
+import org.hibernate.Query;
+import org.hibernate.Session;
 
 import com.csxh.eshop.model.Category;
 import com.csxh.eshop.model.Pager;
 import com.csxh.eshop.model.Product;
 import com.csxh.eshop.model.Subcategory;
+import com.csxh.eshop.util.HibernateSessionUtil;
 import com.csxh.eshop.util.MysqlUtil;
 import com.opensymphony.xwork2.Action;
 import com.opensymphony.xwork2.ActionContext;
 
-public class SubcategoryAction implements Serializable  {
+public class SubcategoryAction implements Serializable {
 
 	/**
 	 * 
@@ -33,15 +36,19 @@ public class SubcategoryAction implements Serializable  {
 		this.id = id;
 	}
 
+	@SuppressWarnings("unchecked")
 	public String handle() {
 
-		Subcategory subCategory = MysqlUtil.queryForObject(Subcategory.class, "id = " + this.id);
-		Category category = MysqlUtil.queryForObject(Category.class, "id =" + subCategory.getCategoryId());
+		Session session = HibernateSessionUtil.openSession();
+		Subcategory subCategory = session.get(Subcategory.class, this.id);
+		Category category = session.get(Category.class, subCategory.getCategoryId());
 		subCategory.setCategory(category);
 		ActionContext.getContext().put("subCategory", subCategory);
 
 		// 分页
-		int totalRows = MysqlUtil.queryTotalRows("product", "id", "subCategoryId =" + this.id);
+		Query query = session.createQuery("select Count(*) from Product Where subCategoryId=?");
+		query.setParameter(0, this.id);
+		long totalRows = (long) query.uniqueResult();
 		String pageRows = ServletActionContext.getServletContext().getInitParameter("pageRows");
 		Pager pager = new Pager(totalRows, pageRows != null ? Integer.parseInt(pageRows) : 5);
 		pager.setCurrentPage(this.currentPage);
@@ -49,11 +56,13 @@ public class SubcategoryAction implements Serializable  {
 		ActionContext.getContext().put("pager", pager);
 
 		// 主列表
-		String sql = "SELECT id,`name`,smallImg,description, price,listPrice,hotDeal FROM product WHERE subCategoryId = "
-				+ this.id + " LIMIT " + pager.getFirstRow() + "," + pager.getPageRows();
-
+		query = session.createQuery(
+				"select id,name,smallImg,description,price,listPrice,hotDeal from Product WHERE subCategoryId=?");
+		query.setParameter(0, this.id);
+		query.setFirstResult(pager.getFirstRow());
+		query.setMaxResults(pager.getPageRows());
+		List<Object[]> objectList = query.list();
 		List<Product> productList = new ArrayList<Product>(pager.getPageRows());
-		List<Object[]> objectList = MysqlUtil.queryForObjectList(sql);
 		for (Object[] o : objectList) {
 			Product product = new Product();
 			product.setId((String) o[0]);
@@ -68,30 +77,20 @@ public class SubcategoryAction implements Serializable  {
 		ActionContext.getContext().put("productList", productList);
 
 		// 推荐列表-commendProductList
-		List<Product> commendProductList = new ArrayList<Product>();
-		objectList = MysqlUtil.queryForObjectList(
-				"SELECT id,`name` FROM product WHERE commend = 1 and subCategoryId = " + this.id + " LIMIT 10");
-		for (Object[] o : objectList) {
-			Product product = new Product();
-			product.setId((String) o[0]);
-			product.setName((String) o[1]);
-			commendProductList.add(product);
-		}
+		query = session.createQuery("select new Product(id,name) from Product where commend=1 and subCategoryId=?");
+		query.setParameter(0, this.id);
+		query.setMaxResults(10);
+		List<Product> commendProductList = query.list();
 		ActionContext.getContext().put("commendProductList", commendProductList);
-		
-		// 推荐列表-commendProductList
-		List<Product> bestSellProductList = new ArrayList<Product>();
-		objectList = MysqlUtil.queryForObjectList(
-				"SELECT id,`name` FROM product WHERE subCategoryId = " + this.id + " ORDER BY sell DESC LIMIT 10");
-		for (Object[] o : objectList) {
-			Product product = new Product();
-			product.setId((String) o[0]);
-			product.setName((String) o[1]);
-			bestSellProductList.add(product);
-		}
-		ActionContext.getContext().put("bestSellProductList", bestSellProductList);
-		
-		return Action.SUCCESS;
 
+		// 推荐列表-commendProductList
+		query = session.createQuery("select new Product(id,name) from Product where subCategoryId=? ORDER BY sell DESC");
+		query.setParameter(0, this.id);
+		query.setMaxResults(10);
+		List<Product> bestSellProductList = query.list();
+		ActionContext.getContext().put("bestSellProductList", bestSellProductList);
+
+		HibernateSessionUtil.closeSession();
+		return Action.SUCCESS;
 	}
 }
