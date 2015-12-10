@@ -15,6 +15,11 @@ public class Admin implements java.io.Serializable {
 	private String password;
 	private String level;
 
+	@Override
+	public String toString() {
+		return "Admin [id=" + id + ", username=" + username + ", password=" + password + ", level=" + level + "]";
+	}
+
 	public Admin() {
 	}
 
@@ -25,7 +30,7 @@ public class Admin implements java.io.Serializable {
 	}
 
 	public Integer getId() {
-		return this.id;
+		return id;
 	}
 
 	public void setId(Integer id) {
@@ -33,7 +38,7 @@ public class Admin implements java.io.Serializable {
 	}
 
 	public String getUsername() {
-		return this.username;
+		return username;
 	}
 
 	public void setUsername(String username) {
@@ -41,7 +46,7 @@ public class Admin implements java.io.Serializable {
 	}
 
 	public String getPassword() {
-		return this.password;
+		return password;
 	}
 
 	public void setPassword(String password) {
@@ -49,11 +54,12 @@ public class Admin implements java.io.Serializable {
 	}
 
 	public String getLevel() {
-		return this.level;
+		return level;
 	}
 
 	public void setLevel(String level) {
 		this.level = level;
 	}
 
+	
 }

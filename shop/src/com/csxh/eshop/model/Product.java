@@ -54,10 +54,10 @@ public class Product implements java.io.Serializable {
 	public Product() {
 	}
 
-	public Product(String id, Date pubDate, Date addDate) {
+	public Product(String id, String name) {
+		super();
 		this.id = id;
-		this.pubDate = pubDate;
-		this.addDate = addDate;
+		this.name = name;
 	}
 
 	public Product(String id, String name, Integer categoryId, Integer subCategoryId, String supplier, String author,
@@ -236,4 +236,11 @@ public class Product implements java.io.Serializable {
 		this.unitWeight = unitWeight;
 	}
 
+	@Override
+	public String toString() {
+		return "Product [id=" + id + ", name=" + name + ", author=" + author + ", description=" + description
+				+ ", smallImg=" + smallImg + "]";
+	}
+
+	
 }
