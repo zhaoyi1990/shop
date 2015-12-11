@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" 
+"http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+
+	<package name="b_eshop" namespace="/admin" extends="struts-default">
+		
+		<action name="admin_*" class="com.csxh.admin.action.AdminAction" method="{1}">
+			<result name="success">logsuccess.jsp</result>
+			<result name="fail">logfail.jsp</result>
+		</action>
+		
+		<action name="*">
+			<result >{1}.jsp</result>
+		</action>
+		
+	</package>
+
+</struts>    

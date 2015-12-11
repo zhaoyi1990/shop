@@ -1,0 +1,66 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2015-12-10 10:13:32 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="com.csxh.eshop.model.Product" table="PRODUCT">
+        <id name="id" type="java.lang.String">
+            <column name="ID" />
+            <generator class="identity" />
+        </id>
+        <property name="name" type="java.lang.String">
+            <column name="NAME" />
+        </property>
+        <property name="categoryId" type="java.lang.Integer">
+            <column name="CATEGORYID" />
+        </property>
+        <property name="subCategoryId" type="java.lang.Integer">
+            <column name="SUBCATEGORYID" />
+        </property>
+        <property name="supplier" type="java.lang.String">
+            <column name="SUPPLIER" />
+        </property>
+        <property name="author" type="java.lang.String">
+            <column name="AUTHOR" />
+        </property>
+        <property name="description" type="java.lang.String">
+            <column name="DESCRIPTION" />
+        </property>
+        <property name="price" type="java.lang.Double">
+            <column name="PRICE" />
+        </property>
+        <property name="listPrice" type="java.lang.Double">
+            <column name="LISTPRICE" />
+        </property>
+        <property name="hotDeal" type="java.lang.Boolean">
+            <column name="HOTDEAL" />
+        </property>
+        <property name="pubDate" type="java.util.Date">
+            <column name="PUBDATE" />
+        </property>
+        <property name="addDate" type="java.util.Date">
+            <column name="ADDDATE" />
+        </property>
+        <property name="commend" type="java.lang.Boolean">
+            <column name="COMMEND" />
+        </property>
+        <property name="smallImg" type="java.lang.String">
+            <column name="SMALLIMG" />
+        </property>
+        <property name="bigImg" type="java.lang.String">
+            <column name="BIGIMG" />
+        </property>
+        <property name="stock" type="java.lang.Integer">
+            <column name="STOCK" />
+        </property>
+        <property name="sell" type="java.lang.Integer">
+            <column name="SELL" />
+        </property>
+        <property name="visits" type="java.lang.Integer">
+            <column name="VISITS" />
+        </property>
+        <property name="unitWeight" type="java.lang.Float">
+            <column name="UNITWEIGHT" />
+        </property>
+    </class>
+</hibernate-mapping>

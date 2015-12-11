@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" 
+"http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+
+	<package name="f_eshop" namespace="/" extends="struts-default">
+		<action name="index" class="com.csxh.eshop.action.IndexAction"
+			method="handle">
+			<result name="success">index.jsp</result>
+		</action>
+
+		<action name="category" class="com.csxh.eshop.action.CategoryAction"
+			method="handle">
+			<result name="success">WEB-INF/category.jsp</result>
+		</action>
+
+		<action name="subcategory" class="com.csxh.eshop.action.SubcategoryAction"
+			method="handle">
+			<result name="success">WEB-INF/subcategory.jsp</result>
+		</action>
+
+		<action name="product" class="com.csxh.eshop.action.ProductAction"
+			method="handle">
+			<result name="success">WEB-INF/product.jsp</result>
+		</action>
+		<action name="product_*" class="com.csxh.eshop.action.ProductAction"
+			method="{1}">
+			<result name="success">WEB-INF/product.jsp</result>
+		</action>
+
+		<action name="cart" class="com.csxh.eshop.action.CartAction"
+			method="handle">
+			<result name="success">WEB-INF/cart.jsp</result>
+			<result name="login">WEB-INF/userlogin.jsp</result>
+		</action>
+
+		<action name="userlogin" class="com.csxh.eshop.action.LoginAction"
+			method="handle">
+			<result name="cart">WEB-INF/cart.jsp</result>
+			<result name="input">WEB-INF/userlogin.jsp</result>
+			<result name="index" type="redirect">index.jsp</result>
+		</action>
+
+		<action name="order" class="com.csxh.eshop.action.OrderAction"
+			method="handle">
+			<result name="success">WEB-INF/order.jsp</result>
+		</action>
+
+		<action name="orderdetail" class="com.csxh.eshop.action.OrderdetailAction"
+			method="handle">
+			<result name="success">WEB-INF/orderdetail.jsp</result>
+		</action>
+
+		<action name="checkorder" class="com.csxh.eshop.action.CheckorderAction"
+			method="handle">
+			<result name="login">WEB-INF/userlogin.jsp</result>
+			<result name="success">WEB-INF/checkorder.jsp</result>
+		</action>
+		
+		<action name="register" class="com.csxh.eshop.action.RegisterAction" method="handle">
+			<result name="success">WEB-INF/userlogin.jsp</result>
+			<result name="fail">WEB-INF/customer_register.jsp</result>
+		</action>
+		
+		<action name="productList_*" class="com.csxh.eshop.action.ProductListAction" method="{1}List">
+			<result name="success">WEB-INF/{1}product.jsp</result>
+		</action>
+		
+		<action name="rating" class="com.csxh.eshop.action.ProductAction" method="rating">
+			<result name="success" type="redirect">WEB-INF/product.jsp</result>
+		</action>
+		
+		<action name="*">
+			<result >{1}.jsp</result>
+		</action>
+	</package>
+
+</struts>    
