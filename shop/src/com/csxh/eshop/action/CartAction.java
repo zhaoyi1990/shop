@@ -4,9 +4,12 @@ import java.io.Serializable;
 import java.util.Arrays;
 
 import org.apache.struts2.ServletActionContext;
+import org.hibernate.Query;
+import org.hibernate.Session;
 
 import com.csxh.eshop.model.Cart;
 import com.csxh.eshop.model.CartItem;
+import com.csxh.eshop.util.HibernateSessionUtil;
 import com.csxh.eshop.util.MysqlUtil;
 import com.csxh.eshop.util.ServletSessionUtil;
 
@@ -50,9 +53,13 @@ public class CartAction implements Serializable {
 	}
 
 	public String handle() {
+		
 		// 获得购物项目
-		Object[] objects = MysqlUtil
-				.queryForObject("SELECT `name`,listPrice,unitWeight FROM product WHERE id='" + this.productId + "'");
+		Session session = HibernateSessionUtil.openSession();
+		Query query = session.createQuery("select name,listPrice,unitWeight from Product where id=?");
+		query.setParameter(0, this.productId);
+		Object[] objects = (Object[]) query.uniqueResult();
+		HibernateSessionUtil.openSession();
 		if (objects != null) {
 			this.item = new CartItem();
 			this.item.setProductId(this.productId);
@@ -91,6 +98,6 @@ public class CartAction implements Serializable {
 		} else {
 			return "login";
 		}
-
+		
 	}
 }

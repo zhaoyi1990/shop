@@ -52,18 +52,18 @@ public class Cart extends ActionSupport {
 		}
 		return total;
 	}
-	
-	public float getWeight(){
-		float weight =0.0f;
-		for(CartItem item : this.itemList){
-			weight += item.getProductWeigh()*item.getProductCount();
+
+	public float getWeight() {
+		float weight = 0.0f;
+		for (CartItem item : this.itemList) {
+			weight += item.getProductWeigh() * item.getProductCount();
 		}
 		return weight;
 	}
-	
-	public int getCount(){
+
+	public int getCount() {
 		int count = 0;
-		for(CartItem item:this.itemList){
+		for (CartItem item : this.itemList) {
 			count += item.getProductCount();
 		}
 		return count;
@@ -72,5 +72,5 @@ public class Cart extends ActionSupport {
 	public void update(int i, int count) {
 		this.itemList.get(i).setProductCount(count);
 	}
-	
+
 }
