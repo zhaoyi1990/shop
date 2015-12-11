@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2015-12-11 13:14:21 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="com.csxh.eshop.model.Review" table="REVIEW">
+        <id name="id" type="java.lang.Integer">
+            <column name="ID" />
+            <generator class="identity" />
+        </id>
+        <property name="productId" type="java.lang.String">
+            <column name="PRODUCTID" />
+        </property>
+        <property name="name" type="java.lang.String">
+            <column name="NAME" />
+        </property>
+        <property name="email" type="java.lang.String">
+            <column name="EMAIL" />
+        </property>
+        <property name="content" type="java.lang.String">
+            <column name="CONTENT" />
+        </property>
+        <property name="time" type="java.util.Date">
+            <column name="TIME" />
+        </property>
+    </class>
+</hibernate-mapping>

@@ -13,5 +13,8 @@
         <mapping resource="com/csxh/eshop/model/Category.hbm.xml"/>
         <mapping resource="com/csxh/eshop/model/Subcategory.hbm.xml"/>
         <mapping resource="com/csxh/eshop/model/Admin.hbm.xml"/>
+        <mapping resource="com/csxh/eshop/model/Review.hbm.xml"/>
+        <mapping resource="com/csxh/eshop/model/Rating.hbm.xml"/>
+        <mapping resource="com/csxh/eshop/model/Customer.hbm.xml"/>
     </session-factory>
 </hibernate-configuration>
